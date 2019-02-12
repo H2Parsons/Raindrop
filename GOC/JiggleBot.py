@@ -1,8 +1,8 @@
-class Raindrop:
+class JiggleBot:
     
-    speed = 5
+    speed = 2
     diameter = 25
-    c = color(0,0,255)
+    c = color(255, 200, 200)
      
     def __init__(self, x, y, team):
         self.x = x
@@ -10,9 +10,11 @@ class Raindrop:
         self.team = team
         
     def move(self):
-        self.y += self.speed
-        if self.y < 0 or self.y > height:
-            self.y = 0
+        self.x += random(-self.speed, self.speed)
+        self.y += random(-self.speed, self.speed)
+        self.x = constrain(self.x, 0, width)
+        self.y = constrain(self.y, 0, height)
+        
         
     def display(self):
         fill(self.c)
