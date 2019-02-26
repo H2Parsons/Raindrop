@@ -3,7 +3,7 @@ from Sprite import Sprite
 class Enemy(Sprite):
     
     speed = 8
-    diameter = 8
+    diameter = 25
     c = color(0, 0, 255)
     
     def move(self):
