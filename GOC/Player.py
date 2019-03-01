@@ -1,7 +1,7 @@
 from SpriteManager import sprites
 from Bullet import Bullet
 
-class Player:
+class Player(Sprite):
     
     # instance variables
     left = False
