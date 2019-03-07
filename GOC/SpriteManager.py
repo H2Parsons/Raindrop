@@ -14,29 +14,30 @@ def getPlayer():
     return player
 
 def destroy(target):
-    destroy.append(target)
+    destroyed.append(target)
     
 def spawn(obj):
     sprites.append(obj)
     
-def animate():
+def manage():
     for sprite in sprites:
         sprite.animate
     checkCollisions()
-    birngOutTheDead()
+    bringOutTheDead()
     
 def checkCollisions():
     for i in range(0, len(sprites)):
-        for j in range(i + l, len(sprites)):
+        for j in range(i + 1, len(sprites)):
             a = sprites[i]
             b = sprites[j]
             if a.team != b.team and a.isColliding(b):
-                sprites[i].handCollision()
-                sprites[j].handCollision()
+                sprites[i].handleCollision()
+                sprites[j].handleCollision()
                 
 def bringOutTheDead():
     for sprite in destroyed:
-        sprite.remove(sprite)
+        if sprite in sprites:
+            sprites.remove(sprite)
         destroyed.remove(sprite)
             
         
