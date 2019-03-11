@@ -21,7 +21,7 @@ def spawn(obj):
     
 def manage():
     for sprite in sprites:
-        sprite.animate
+        sprite.animate()
     checkCollisions()
     bringOutTheDead()
     

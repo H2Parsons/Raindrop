@@ -8,7 +8,6 @@ from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 import SpriteManager
 
-
 def setup():
     print "Built with Processing Python version " + platform.python_version()
     
@@ -17,9 +16,7 @@ def setup():
     playerTeam = 1
     enemyTeam = 2
     player = Player(width/2, height/2, playerTeam)
-    
-    
-    #sprites.append(player)
+    SpriteManager.setPlayer(player)
     SpriteManager.spawn(Enemy(50, 50, enemyTeam))
     SpriteManager.spawn(Enemy(150, 150, enemyTeam))
     SpriteManager.spawn(Raindrop(25, random(0, 50), enemyTeam)) #1
@@ -34,26 +31,14 @@ def setup():
     SpriteManager.spawn(Raindrop(475, random(0, 50), enemyTeam)) #10
     SpriteManager.spawn(JiggleBot(random(0, width), random(0, height), enemyTeam))
     SpriteManager.spawn(ScreenSaverBot(random(0, width), random(0, height), enemyTeam))
-    
-    SpriteManager.setPlayer(player)
     SpriteManager.spawn(JiggleBot(random(0, width), random(0, height), 2))
     
 def draw():
-    #global player, sprites
     background(255)    
     SpriteManager.manage()
-
-    #for sprite in sprites:
-        #sprite.animate()
-        
-    #checkCollisions()
-
+    
 def keyPressed():
     SpriteManager.player.keyDown()
-    #global player
-    #player.keyDown()    
         
 def keyReleased():
     SpriteManager.player.keyUp()
-    #global player
-    #player.keyUp()
