@@ -25,9 +25,6 @@ class Player(Sprite):
         self.x = constrain(self.x, self.diameter / 2, width - self.diameter / 2)
         self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
         
-    def handleCollision(self):
-        pass
-        
     def keyDown(self):
         if key == 'f' or key == 'F':
             sprites.append(Bullet(self.x, self.y, PVector(0, -10), self.team))
