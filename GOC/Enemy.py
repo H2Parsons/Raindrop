@@ -1,9 +1,10 @@
 import SpriteManager
 from Sprite import Sprite
 from Bullet import Bullet
+from Shooter import Shooter
 
 
-class Enemy(Sprite):
+class Enemy(Sprite, Shooter):
     mark = 0
     wait = 500
     speed = 8
@@ -15,7 +16,6 @@ class Enemy(Sprite):
     def move(self):
         mark = 0
         wait = 1000
-        Go = True
         
         self.x += self.speed
         if self.x < 0 or self.x > width:
@@ -23,16 +23,3 @@ class Enemy(Sprite):
             
         vector = self.aim(SpriteManager.getPlayer())
         self.fire(vector)
-        
-    def aim(self, target):
-        xComponent = target.x - self.x
-        yComponent = target.y - self.y
-        Component = (xComponent * xComponent) + (yComponent * yComponent)
-        D = sqrt(Component)
-        return PVector(4*xComponent/D, 4*yComponent/D) 
-    
-    def fire(self, vector):
-            
-            if millis() - self.mark > self.wait:
-                   SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
-                   self.mark = millis()

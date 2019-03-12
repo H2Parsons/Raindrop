@@ -7,6 +7,7 @@ from Raindrop import Raindrop
 from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 import SpriteManager
+from ArmoredShooter import ArmoredShooter
 
 def setup():
     print "Built with Processing Python version " + platform.python_version()
@@ -32,6 +33,8 @@ def setup():
     SpriteManager.spawn(JiggleBot(random(0, width), random(0, height), enemyTeam))
     SpriteManager.spawn(ScreenSaverBot(random(0, width), random(0, height), enemyTeam))
     SpriteManager.spawn(JiggleBot(random(0, width), random(0, height), 2))
+    
+    SpriteManager.spawn(ArmoredShooter(random(0, width), 50, enemyTeam))
     
 def draw():
     background(255)    
