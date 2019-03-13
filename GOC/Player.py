@@ -11,7 +11,7 @@ class Player(Sprite):
     down = False
     speed = 5
     diameter = 30
-    c = color(255,0,0)
+    c = color(255)
     
     def move(self):
         if self.left:
@@ -47,5 +47,8 @@ class Player(Sprite):
             self.up = False
         if keyCode == DOWN:
             self.down = False
+            
+    def handleCollision(self):
+        pass
             
     

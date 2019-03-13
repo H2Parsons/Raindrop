@@ -1,10 +1,10 @@
 import SpriteManager
 from Sprite import Sprite
 
-class Bullet(Sprite):
+class BigBullet(Sprite):
     
-    diameter = 10
-    c = color(255, 0 ,0)
+    diameter = 25
+    c = color(155, 0, 0)
     
     def __init__(self, x, y, vector, team):
         self.x = x
