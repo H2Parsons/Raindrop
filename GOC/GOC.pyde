@@ -8,15 +8,21 @@ from JiggleBot import JiggleBot
 from ScreenSaverBot import ScreenSaverBot
 import SpriteManager
 from ArmoredShooter import ArmoredShooter
+from Star import Star
+
 
 def setup():
     print "Built with Processing Python version " + platform.python_version()
-    
-    global player, sprites
+
     size(500, 500)
     playerTeam = 1
     enemyTeam = 2
     player = Player(width/2, height/2, playerTeam)
+    
+    for i in range(0, width, random(0, 50)):
+        for j in range(0, height, rabdom(0, 50)):
+            SpriteManager.spawn(Star(i, j, 2))
+    
     SpriteManager.setPlayer(player)
     SpriteManager.spawn(Enemy(20, 250, enemyTeam))
     SpriteManager.spawn(Enemy(150, 150, enemyTeam))
@@ -36,9 +42,13 @@ def setup():
     
     SpriteManager.spawn(ArmoredShooter(random(0, width), 50, enemyTeam))
     
+    
+    
 def draw():
     background(0)    
     SpriteManager.manage()
+    
+    
     
 def keyPressed():
     SpriteManager.player.keyDown()

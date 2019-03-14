@@ -32,7 +32,7 @@ class ArmoredShooter(Sprite, Shooter):
             self.mark = millis()
     
     def handleCollision(self):
-        if(self.Armor > 0):
+        if self.Armor > 0:
             self.Armor -= 2
         else:
             SpriteManager.destroy(self)

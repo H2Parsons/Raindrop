@@ -10,3 +10,6 @@ class Star(Sprite):
         self.y += self.speed
         if self.y < 0 or self.y > height:
             self.y = 0
+            
+    def handleCollision(self):
+        pass
