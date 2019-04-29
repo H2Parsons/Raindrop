@@ -2,7 +2,8 @@ import SpriteManager
 
 class Sprite:
     team = 2
-    diameter = 50
+    xLength = 50
+    yLength = 25
     c = color(255)
     
     def __init__(self, x, y, team):
@@ -16,16 +17,21 @@ class Sprite:
     def display(self):
         fill(self.c)
         stroke(50)
-        ellipse(self.x, self.y, self.diameter, self.diameter)
+        rect(self.x, self.y, self.xLength, self.yLength)
         
     def animate(self):
         self.move()
         self.display()
         
+    ### 2C ###
     def isColliding(self, other):
-        r1 = self.diameter / 2.0
-        r2 = self.diameter / 2.0
-        return r1 + r2 > dist(self.x, self.y, other.x, other.y)
-    
+        if ((self.x < other.x + other.xLength) 
+        and (self.x + self.xLength > other.x)
+        and (self.y < other.y + other.yLength)
+        and (self.y + self.yLength > other.y)):
+            return True
+        else:
+            return False
+        
     def handleCollision(self):
         SpriteManager.destroy(self)

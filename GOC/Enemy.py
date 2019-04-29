@@ -8,10 +8,10 @@ class Enemy(Sprite, Shooter):
     mark = 0
     wait = 500
     speed = 8
-    diameter = 25
+    xLength = 25
+    yLength = 25
     
     c = color(0, 0, 255)
-
     
     def move(self):
         mark = 0

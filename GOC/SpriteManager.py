@@ -3,6 +3,7 @@ destroyed = []
 
 playerTeam = 1
 enemyTeam = 2
+passiveTeam = 00
 
 def setPlayer(playerInstance):
     global player
@@ -30,10 +31,10 @@ def checkCollisions():
         for j in range(i + 1, len(sprites)):
             a = sprites[i]
             b = sprites[j]
-            if a.team != b.team and a.isColliding(b):
+            if a.team != 00 and b.team != 00 and a.team != b.team and a.isColliding(b):
                 sprites[i].handleCollision()
-                sprites[j].handleCollision()
-                
+                sprites[j].handleCollision()    
+                                              
 def bringOutTheDead():
     for sprite in destroyed:
         if sprite in sprites:

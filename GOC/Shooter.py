@@ -21,5 +21,5 @@ class Shooter:
             
     def fire(self, vector):
         if millis() - self.mark > self.wait:
-            SpriteManager.spawn(Bullet(self.x, self.y, vector, self.team))
+            SpriteManager.spawn(Bullet(self.x + self.xLength / 2 - 5, self.y + self.yLength, vector, self.team))
             self.mark = millis()

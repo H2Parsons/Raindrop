@@ -10,8 +10,17 @@ class Player(Sprite):
     up = False
     down = False
     speed = 5
-    diameter = 30
-    c = color(255)
+    #diameter = 30
+    xLength = 30
+    yLength = 30
+    
+    c = color(random(0, 255), random(0, 255), random(0, 255))
+
+    
+    def display(self):
+        fill(self.c)
+        stroke(50)
+        rect(self.x, self.y, self.xLength, self.yLength)
     
     def move(self):
         if self.left:
@@ -22,12 +31,12 @@ class Player(Sprite):
             self.y -= self.speed
         if self.down:
             self.y += self.speed
-        self.x = constrain(self.x, self.diameter / 2, width - self.diameter / 2)
-        self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
+        self.x = constrain(self.x, 0, width - self.xLength)
+        self.y = constrain(self.y, 0, height - self.yLength)
         
     def keyDown(self):
         if key == 'f' or key == 'F':
-            sprites.append(Bullet(self.x, self.y, PVector(0, -10), self.team))
+            sprites.append(Bullet(self.x + self.xLength / 2 - 5, self.y - 5, PVector(0, -10), self.team))
     
         if keyCode == LEFT:
             self.left = True
@@ -47,8 +56,3 @@ class Player(Sprite):
             self.up = False
         if keyCode == DOWN:
             self.down = False
-            
-    def handleCollision(self):
-        pass
-            
-    

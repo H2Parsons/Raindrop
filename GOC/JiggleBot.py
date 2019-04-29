@@ -4,6 +4,8 @@ class JiggleBot(Sprite):
     
     speed = 2
     diameter = 25
+    xLength = 25
+    yLength = 25
     c = color(255, 200, 200)
         
     def move(self):
@@ -11,3 +13,4 @@ class JiggleBot(Sprite):
         self.y += random(-self.speed, self.speed)
         self.x = constrain(self.x, 0, width)
         self.y = constrain(self.y, 0, height)
+        
