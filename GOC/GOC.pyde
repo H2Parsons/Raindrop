@@ -17,13 +17,22 @@ def setup():
     size(500, 500)
     playerTeam = 1
     enemyTeam = 2
+    passiveTeam = 00
+    NoTwinkle = 1
+    YesTwinkle = 2
+    TwinkleNo = 0
     player = Player(width / 2, height / 2, playerTeam)
 
     for i in range(0, height, 2):
-        stroke(100, 255, 100)
-        line(50, i, 80, i)
+        #stroke(100, 255, 100)
+        #line(50, i, 80, i)
         stroke(0)
-        SpriteManager.spawn(Star(random(0, width), random(0, height), enemyTeam))
+        if TwinkleNo != 5:
+            SpriteManager.spawn(Star(random(0, width), random(0, height), passiveTeam, NoTwinkle))
+            TwinkleNo += 1
+        elif TwinkleNo == 5:
+            SpriteManager.spawn(Star(random(0, width), random(0, height), passiveTeam, YesTwinkle))
+            TwinkleNo = 0
 
     SpriteManager.setPlayer(player)
     SpriteManager.spawn(Enemy(20, 250, enemyTeam))
@@ -54,15 +63,34 @@ def draw():
 
     x = 150
     y = 150
+    cR = 0
+    cG = 150
+    cB = 255
+    
 
-    fill(250)
+    fill(cR, cG, cB)
     noStroke()
     #triangle(150, 100, 100, 150, 150, 200)
     #triangle(150, 100, 200, 150, 150, 200)
-    triangle(x, y - 2, x - 2, y, x, y + 2)
-    triangle(x, y - 2, x + 2, y, x, y + 2)    
+    #triangle(x, y - 2, x - 2, y, x, y + 2)
+    #triangle(x, y - 2, x + 2, y, x, y + 2)    
     strokeWeight(1)
     #ellipse(150, 150, 10, 10)
+    
+    #if cR < 255:
+    #    cR += 5
+    #elif cR == 255:
+    #    cR = 0
+    #        
+    #elif cG < 255:
+    #    cG += 5
+    #elif cG == 255:
+    #    cG = 0
+    #        
+    #if cB < 255:
+    #    cB += 5
+    #elif cB == 255:
+    #    cB = 0
 
 def keyPressed():
     SpriteManager.player.keyDown()

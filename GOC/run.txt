@@ -1,1 +1,87 @@
 java -jar processing-py.jar GOC.pyde
+
+java -jar processing-py.jar GOR.pyde
+
+java -jar processing-py.jar Dummy_RectCollision.pyde
+
+
+
+##Don’t mind this stuff##
+
+x = 150
+    y = 150
+    cR = 0
+    cG = 150
+    cB = 255
+    
+
+    fill(cR, cG, cB)
+    noStroke()
+    #triangle(150, 100, 100, 150, 150, 200)
+    #triangle(150, 100, 200, 150, 150, 200)
+    #triangle(x, y - 2, x - 2, y, x, y + 2)
+    #triangle(x, y - 2, x + 2, y, x, y + 2)    
+    strokeWeight(1)
+    #ellipse(150, 150, 10, 10)
+    
+    #if cR < 255:
+    #    cR += 5
+    #elif cR == 255:
+    #    cR = 0
+    #        
+    #elif cG < 255:
+    #    cG += 5
+    #elif cG == 255:
+    #    cG = 0
+    #        
+    #if cB < 255:
+    #    cB += 5
+    #elif cB == 255:
+    #    cB = 0
+
+
+
+
+var NUM_FLIPS = 100;
+
+function start(){
+	var flips = flipCoins();
+	var result = countHeadsAndTails();
+	printArray(result);
+}
+
+// This function should flip a coin NUM_FLIPS
+// times, and add the result to an array. We
+// return the result to the caller.
+function flipCoins(){
+	var flips = [];
+	for(var i = 0; i < NUM_FLIPS; i++){
+		if(Randomizer.nextBoolean()){
+			flips.push("Heads");
+		}else{
+			flips.push("Tails");
+		}
+	}
+	return flips;
+}
+
+function countHeadsAndTails(flips) {
+    var heads = 0;
+    var tails = 0;
+    for(var i = 0; i < flips.length; i++) {
+        if(flips[i] == "Heads") {
+            heads += 1;
+        } else {
+            tails += 1;
+        }
+    }
+    //var FinalResult = "Heads: " + heads + "Tails: " + tails;
+    //return FinalResult;
+    println("Heads: " + heads + "Tails: " + tails);    
+}
+
+function printArray(arr){
+	for(var i = 0; i < arr.length; i++){
+		println(i + ": " + arr[i]);
+	}
+}

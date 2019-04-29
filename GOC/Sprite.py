@@ -28,4 +28,5 @@ class Sprite:
         return r1 + r2 > dist(self.x, self.y, other.x, other.y)
     
     def handleCollision(self):
+        #if(self.team != other.team):
         SpriteManager.destroy(self)

@@ -11,7 +11,33 @@ class Player(Sprite):
     down = False
     speed = 5
     diameter = 30
-    c = color(255)
+    
+    cR = 0
+    cG = 150
+    cB = 255
+    
+    c = color(random(0, 255), random(0, 255), random(0, 255))
+
+    
+    def display(self):
+        fill(self.c)
+        stroke(50)
+        ellipse(self.x, self.y, self.diameter, self.diameter)
+        
+        #if self.cR < 255:
+        #    self.cR += 5
+        #elif self.cR == 255:
+        #    self.cR = 0
+        #    
+        #if self.cG < 255:
+        #    self.cG += 5
+        #elif self.cG == 255:
+        #    self.cG = 0
+        #    
+        #if self.cB < 255:
+        #    self.cB += 5
+        #elif self.cB == 255:
+        #    self.cB = 0
     
     def move(self):
         if self.left:
@@ -24,6 +50,21 @@ class Player(Sprite):
             self.y += self.speed
         self.x = constrain(self.x, self.diameter / 2, width - self.diameter / 2)
         self.y = constrain(self.y, self.diameter / 2, height - self.diameter / 2)
+        
+        #if self.cR < 255:
+        #    self.cR += 5
+        #elif self.cR == 255:
+        #    self.cR = 0
+        #    
+        #if self.cG < 255:
+        #    self.cG += 5
+        #elif self.cG == 255:
+        #    self.cG = 0
+        #    
+        #if self.cB < 255:
+        #    self.cB += 5
+        #elif self.cB == 255:
+        #    self.cB = 0
         
     def keyDown(self):
         if key == 'f' or key == 'F':
